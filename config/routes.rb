@@ -1,4 +1,5 @@
 Wordcards::Application.routes.draw do
+  root to: "cards#index"
   resources :tempos
 
   resources :cards
