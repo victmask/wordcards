@@ -2,3 +2,4 @@ $('#tweet_result').text('<%= escape_javascript(@result) %>').css('color', 'green
 <% if @error %>
     $('#tweet_result').text('<%= escape_javascript(@error) %>').css('color', 'red');
 <% end %>
+toggleSpinner();

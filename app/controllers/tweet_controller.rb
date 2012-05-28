@@ -24,7 +24,6 @@ class TweetController < ApplicationController
 
     @result = 'Card tweets scheduled'
 
-
   end
 
   def card_url(card_uuid)

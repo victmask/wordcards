@@ -93,10 +93,10 @@
     <br/>
     <%= form_tag tweet_push_cards_path, remote: true, method: :post do %>
       <!--< %= link_to 'Schedule my cards', tweet_push_cards_path(), remote: true, method: :post, class: :btn %>-->
-      <%= submit_tag 'Schedule my cards', class: 'btn-fat' %>
+      <%= submit_tag 'Schedule my cards', class: 'btn-fat', onclick: 'toggleSpinner()' %>
       <br/>
       <%= text_field_tag "my_twitter", @my_twitter, style: "width:160px; margin-top: 3px;" %>
-  <% end %>
+    <% end %>
     <br/>
     <p>
       Receive new cards:
@@ -117,6 +117,7 @@
     </script>
     <br/>
     <span id="tweet_result"></span>
+    <div id="spinner" style="display:none"><%= image_tag 'spinner.gif' %></div>
 
   </div>
 

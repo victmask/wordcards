@@ -5,6 +5,8 @@
 
 google.load('search', '1')
 
+@toggleSpinner = -> $("#spinner").toggle()
+
 @lookup = (word) ->
   lookupDefinition(word, $('#card_definition')[0])
   lookupExample(word, $('#card_example')[0])
@@ -81,14 +83,18 @@ lookupService = (url, word, resultContainer) ->
 
 
 $ ->
-  $("div.field input#card_word").live "keyup", (e) ->
-    e.preventDefault()
-    e.stopPropagation()
-    console.log(e.keyCode)
-    if e.keyCode == 13
-      $("div.field input#lookup-button").click()
-      console.log("click!")
+  alert($(".ajax-form").length)
+  $("form[data-remote]")
+      .bind('ajax:before', -> alert('before'))
+      .bind('ajax:complete', -> alert('complete'))
+      .bind('ajaxComplete', -> alert('success'))
+  $(".ajax-link")
+      .bind('ajax:before', -> alert('before'))
+      .bind('ajax:complete', -> alert('complete'))
+      .bind('ajaxComplete', -> alert('success'))
 
+#      .bind('ajax:before', toggleSpinner)
+#      .bind('ajax:complete', toggleSpinner)
 #  $("article.card-thumb").click ->
 #    $(this).rotate3Di('flip', 500)
 #    $(this).find("div").stop().rotate3Di('flip', 250);
