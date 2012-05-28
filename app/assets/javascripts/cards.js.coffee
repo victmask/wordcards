@@ -4,8 +4,6 @@
 #= require google_jsapi
 
 google.load('search', '1')
-count = 0
-lastImage = ''
 
 @lookup = (word) ->
   lookupDefinition(word, $('#card_definition')[0])
@@ -24,16 +22,13 @@ lookupTranslation = (word, resultContainer) ->
   lookupService("/lookup/translation", word, resultContainer)
 
 
-@addImageLinkToWord = (image) ->
-#  $(image).attr("src")
-  if lastImage
-    transformImage(lastImage, "none")
-#    $(lastImage).attr("name", "")
+@highlightImage = (image) ->
+  $('.google-image').css('border','none').each( -> transformImage(this, "none"))
   transformImage(image, "scale(1.1) rotate(-2deg)" )
-#  $(image).attr("name", "card[image_src]")
+  $(image).css('border','3px solid black')
+
+@populateImageUrl = (image) ->
   $("#card_image_src").val($(image).attr("src"))
-  console.log($("#card_image_src").val());
-  lastImage = image
 
 
 transformImage = (image, transformationString) ->
@@ -45,21 +40,25 @@ transformImage = (image, transformationString) ->
 
 searchComplete = (searcher) ->
   if searcher.results and searcher.results.length > 0
-    contentDiv = document.getElementById('google-images-content')
-    contentDiv.innerHTML = ''
+    contentDiv = $('#google-images-content')
+    contentDiv.html('')
 
     results = searcher.results
     printSearch result, contentDiv for result in results
 
 printSearch = (result, contentDiv) ->
-  count = count + 1
-  newImg = document.createElement('img')
-  newImg.setAttribute('id', 'google-image-'+count)
-  newImg.setAttribute('class', 'google-image')
-#  newImg.src = result.tbUrl
-  newImg.src = result.url
-  newImg.setAttribute('onclick', 'addImageLinkToWord(this);')
-  contentDiv.appendChild(newImg)
+  contentDiv.append(
+#    "<div>"
+    "<img class='google-image' src='" + result.url + "' onmouseover='highlightImage(this);populateImageUrl(this);' />"
+#    + "</div>"
+  )
+#  newImg = document.createElement('img')
+#  newImg.setAttribute('id', 'google-image-' + index)
+#  newImg.setAttribute('class', 'google-image')
+#  newImg.src = result.url
+#  newImg.setAttribute('onmouseover', 'rotateImage(this);populateImageUrl(this);')
+#  contentDiv.append(newImg)
+#  contentDiv.appendChild(newImg)
 
 lookupImages = (word) ->
   imageSearch = new google.search.ImageSearch()

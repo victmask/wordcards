@@ -5,12 +5,12 @@
   $(document).ready(function() {
       function mySideChange(front) {
         if (front) {
-            $(this).parent().find('div.front').show();
-            $(this).parent().find('div.back').hide();
+            $(this).parent('div.front').show();
+            $(this).parent('div.back').hide();
 
         } else {
-            $(this).parent().find('div.front').hide();
-            $(this).parent().find('div.back').show();
+            $(this).parent('div.front').hide();
+            $(this).parent('div.back').show();
         }
     }
       $("article.card").hover(
@@ -29,7 +29,7 @@
 
 </script>
 
-<h2>Cards</h2>
+<h2>Word Cards</h2>
 
 <div id="container">
   <section class="cards">
@@ -49,28 +49,59 @@
           </div>
 
           <div class="card-thumb back" style="display: none;">
+              <div class="word">
+                <strong>Translation:</strong> <%= card.translation %>
+              </div>
+             <div class="view-card-wrapper">
+               <%= link_to 'View Full Card', card, class: 'btn-view-card' %>
+             </div>
+            <!--<div></div>-->
+            <!--< %= link_to card do %>-->
+
+               <!--<div class="word">-->
+                  <!--< %= card.translation %>-->
+                  <!--&lt;!&ndash;< %= link_to_unless_current card.translation, card %>&ndash;&gt;-->
+                <!--</div>-->
+            <!--< % end %>-->
+          </div>
+
+        </article>
+      <% end %>
+
+      <%= link_to(new_card_path) do %>
+        <article class="new-card">
+          <div class="card-thumb front">
+            <div class="picture">
+            </div>
             <div class="word">
-              <%= link_to_unless_current card.translation, card %>
+              new card
             </div>
           </div>
         </article>
-
-
-
       <% end %>
+
+
     <!--</div>-->
   </section>
 
 
 
   <div class="menu">
-    <%= link_to 'New Card', new_card_path %>
-    <br/>
-    <%= link_to 'Schedule my card tweets', tweet_push_cards_path(), remote: true, method: :post %>
-    <span id="tweet_result"></span>
+
+
 
     <br/>
+    <%= form_tag tweet_push_cards_path, remote: true, method: :post do %>
+      <!--< %= link_to 'Schedule my cards', tweet_push_cards_path(), remote: true, method: :post, class: :btn %>-->
+      <%= submit_tag 'Schedule my cards', class: 'btn-fat' %>
+      <br/>
+      <%= text_field_tag "my_twitter", @my_twitter, style: "width:160px; margin-top: 3px;" %>
+  <% end %>
     <br/>
+    <p>
+      Receive new cards:
+    </p>
+
     <a href="https://twitter.com/gowordcards" class="twitter-follow-button" data-show-count="false" data-size="large"
        data-show-screen-name="false">Follow@gowordcards</a>
     <script>
@@ -84,6 +115,9 @@
         }
     }(document, "script", "twitter-wjs");
     </script>
+    <br/>
+    <span id="tweet_result"></span>
+
   </div>
 
 </div>

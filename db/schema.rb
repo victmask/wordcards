@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20120520232730) do
 
   create_table "cards", :force => true do |t|
     t.string   "word"
+    t.string   "translation"
     t.text     "definition"
-    t.text     "translation"
     t.text     "example"
     t.integer  "user_id"
     t.datetime "created_at",  :null => false

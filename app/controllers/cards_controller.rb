@@ -6,6 +6,7 @@ class CardsController < ApplicationController
 
 
   def index
+    @my_twitter = session[:my_twitter] || '@mytwitter'
     @cards = Card.all.paginate(:page => params[:page])
   end
 
@@ -20,7 +21,7 @@ class CardsController < ApplicationController
     puts "lblblblbl #{@card.image_src }  empty?=#{params[:card][:image_src].empty?}"
     result = @card.save
     result || (render(action: :new) && return)
-    redirect_to @card, notice: "Word card was successfully created"
+    redirect_to :root
   end
 
   def show

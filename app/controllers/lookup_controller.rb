@@ -6,7 +6,7 @@ class LookupController < ApplicationController
   end
 
   def translation
-    render :json => {:result => Lookup::Translation.lookup(params[:word]).join(",")}
+    render :json => {:result => Lookup::Translation.lookup(params[:word]).join(", ")}
   end
 
   def example
