@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 
   respond_to :html
 
-  before_filter ->{@card = Card.find(params[:id])}, only: [:edit, :update, :show, :destroy]
+  before_filter ->{@card = Card.find_by_uuid(params[:id])}, only: [:edit, :update, :show, :destroy]
 
 
   def index

@@ -19,10 +19,13 @@ ActiveRecord::Schema.define(:version => 20120520232730) do
     t.text     "definition"
     t.text     "example"
     t.integer  "user_id"
+    t.string   "uuid",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "image_src"
   end
+
+  add_index "cards", ["uuid"], :name => "index_cards_on_uuid"
 
   create_table "cards_tags", :force => true do |t|
     t.integer  "card_id"
