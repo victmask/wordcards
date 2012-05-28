@@ -83,15 +83,15 @@ lookupService = (url, word, resultContainer) ->
 
 
 $ ->
-  alert($(".ajax-form").length)
-  $("form[data-remote]")
-      .bind('ajax:before', -> alert('before'))
-      .bind('ajax:complete', -> alert('complete'))
-      .bind('ajaxComplete', -> alert('success'))
-  $(".ajax-link")
-      .bind('ajax:before', -> alert('before'))
-      .bind('ajax:complete', -> alert('complete'))
-      .bind('ajaxComplete', -> alert('success'))
+#  alert($(".ajax-form").length)
+#  $("form[data-remote]")
+#      .bind('ajax:before', -> alert('before'))
+#      .bind('ajax:complete', -> alert('complete'))
+#      .bind('ajaxComplete', -> alert('success'))
+#  $(".ajax-link")
+#      .bind('ajax:before', -> alert('before'))
+#      .bind('ajax:complete', -> alert('complete'))
+#      .bind('ajaxComplete', -> alert('success'))
 
 #      .bind('ajax:before', toggleSpinner)
 #      .bind('ajax:complete', toggleSpinner)
