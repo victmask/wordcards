@@ -30,6 +30,11 @@ end
 gem 'will_paginate'
 gem 'jquery-rails'
 
+group :test do
+  gem 'test-unit'
+  gem 'mocha'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
