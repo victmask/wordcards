@@ -1,34 +1,3 @@
-<script type="text/javascript" src="assets/jquery.js"></script>
-<script type="text/javascript" src="assets/rotate3Di/jquery-css-transform.js"></script>
-<script type="text/javascript" src="assets/rotate3Di/rotate3Di.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-      function mySideChange(front) {
-        if (front) {
-            $(this).parent('div.front').show();
-            $(this).parent('div.back').hide();
-
-        } else {
-            $(this).parent('div.front').hide();
-            $(this).parent('div.back').show();
-        }
-    }
-      $("article.card").hover(
-
-              function() {
-                  $(this).find("div").stop().rotate3Di('flip', 250,{direction: 'clockwise', sideChange: mySideChange});
-              }
-              ,
-              function() {
-                  $(this).find("div").stop().rotate3Di('unflip', 500, {sideChange: mySideChange});
-              }
-      )
-
-
-});
-
-</script>
-
 <h2>Word Cards</h2>
 
 <div id="container">

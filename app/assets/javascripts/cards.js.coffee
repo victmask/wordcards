@@ -50,25 +50,16 @@ searchComplete = (searcher) ->
 
 printSearch = (result, contentDiv) ->
   contentDiv.append(
-#    "<div>"
     "<img class='google-image' src='" + result.url + "' onmouseover='highlightImage(this);populateImageUrl(this);' />"
-#    + "</div>"
   )
-#  newImg = document.createElement('img')
-#  newImg.setAttribute('id', 'google-image-' + index)
-#  newImg.setAttribute('class', 'google-image')
-#  newImg.src = result.url
-#  newImg.setAttribute('onmouseover', 'rotateImage(this);populateImageUrl(this);')
-#  contentDiv.append(newImg)
-#  contentDiv.appendChild(newImg)
 
 lookupImages = (word) ->
   imageSearch = new google.search.ImageSearch()
 #  TODO comment out restrictions later
   imageSearch.setRestriction(
-    google.search.ImageSearch.IMAGESIZE_MEDIUM
-#      google.search.ImageSearch.RESTRICT_RIGHTS,
-#      google.search.ImageSearch.RIGHTS_COMMERCIAL_MODIFICATION
+    google.search.ImageSearch.IMAGESIZE_MEDIUM,
+    google.search.ImageSearch.RESTRICT_RIGHTS,
+    google.search.ImageSearch.RIGHTS_COMMERCIAL_MODIFICATION
   )
   imageSearch.setSearchCompleteCallback(this, searchComplete, [imageSearch])
   imageSearch.execute(word)
@@ -82,23 +73,19 @@ lookupService = (url, word, resultContainer) ->
   });
 
 
+@mySideChange = (front) ->
+  if front
+    $(this).parent('div.front').show()
+    $(this).parent('div.back').hide()
+  else
+    $(this).parent('div.front').hide()
+    $(this).parent('div.back').show()
+
 $ ->
-#  alert($(".ajax-form").length)
-#  $("form[data-remote]")
-#      .bind('ajax:before', -> alert('before'))
-#      .bind('ajax:complete', -> alert('complete'))
-#      .bind('ajaxComplete', -> alert('success'))
-#  $(".ajax-link")
-#      .bind('ajax:before', -> alert('before'))
-#      .bind('ajax:complete', -> alert('complete'))
-#      .bind('ajaxComplete', -> alert('success'))
-
-#      .bind('ajax:before', toggleSpinner)
-#      .bind('ajax:complete', toggleSpinner)
-#  $("article.card-thumb").click ->
-#    $(this).rotate3Di('flip', 500)
-#    $(this).find("div").stop().rotate3Di('flip', 250);
-
+  $("article.card").hover(
+    -> $(this).find("div").stop().rotate3Di('flip', 250,{direction: 'clockwise', sideChange: mySideChange}),
+    -> $(this).find("div").stop().rotate3Di('unflip', 500, {sideChange: mySideChange})
+  )
 
 
 
