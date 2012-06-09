@@ -92,7 +92,7 @@ border-radius: 5px;
 }
 
 input[type="button"], input[type="submit"] {
-margin-right: 10px;
+margin-left: 15px;
 padding: 8px 15px;
 text-transform: uppercase;
 line-height: 1;
@@ -116,5 +116,10 @@ box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
 .form{
     /*width: 80%;*/
     margin: 0 auto;
+    text-align: center;
+}
+
+#card_word{
+width: 250px;
 }
 
