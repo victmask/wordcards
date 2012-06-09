@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="card">
+<div>
   <p>
     <%= label(@card, :word) %>:
   <pre><%= @card.word %></pre>
@@ -28,7 +28,7 @@
   </p>
 </div>
 
-<%= link_to 'Edit', edit_card_path(@card) %> | <%= link_to 'Destroy', @card, confirm: 'Are you sure?', method: :delete %>
-<br/>
-<%= link_to 'Back', cards_path %>
+<%= link_to 'Edit', edit_card_path(@card), class: :btn %> <%= link_to 'Destroy', @card, confirm: 'Are you sure?', method: :delete, class: :btn %>
+<br/><br/><br/>
+<%= link_to 'Back', cards_path, class: :btn %>
 

@@ -2,10 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-*{
-font-family: Comic Sans MS, sans-serif;
-color: #787871;
+* {
+  font-family: Comic Sans MS, sans-serif;
+  color: #787871;
 
+}
+
+body {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 label {
@@ -15,69 +26,135 @@ label {
 
 }
 
-/*.card {*/
-  /*width: 550px;*/
-/*}*/
+.card {
+  width: 280px;
+  height: 220px;
+  float: left;
+}
 
 div.card-thumb {
-    margin: 10px;
-    padding: 10px;
-    width: 240px;
-    height: 180px;
-    float: left;
-    overflow: hidden;
-    background: none repeat scroll 0 0 #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 10px;
+  width: 240px;
+  height: 180px;
+  float: left;
+  overflow: hidden;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
-div.back{
-background-color:red;
+
+.new-card .card-thumb {
+  box-shadow: 2px 2px 10px rgba(0,0,0, 0.9);
+}
+
+.new-card .picture {
+  width: 240px;
+  height: 140px;
+  border: 1px solid #DEDEDE;
+}
+
+div.back {
+  background-color: #ECECEC;
 }
 
 /*.picture{*/
 /*position: relative;*/
 /*overflow: hidden;*/
 /*}*/
-.picture img{
-    border: 1px solid #939598;
-    margin: 5px auto;
-    width: 240px;
-    height: 140px;
-    /*overflow: hidden;*/
-    /*position: absolute;*/
+.picture img {
+  border: 1px solid #DEDEDE;
+  //margin: 5px auto;
+  width: 240px;
+  height: 140px;
+/*overflow: hidden;*/
+/*position: absolute;*/
+}
+.picture {
+  margin: 5px auto;
 }
 
-.google-image{
-    max-height: 180px;
-    width: 240px;
+#google-images-content {
+  margin-top: 10px;
 }
 
-
-.word{
-    cursor: pointer;
-    text-align: center;
-    /*position: relative;*/
-    /*bottom: 15%;*/
-    background: url(card-hover.png) repeat-x scroll 0 0 transparent;
-    font: normal 16px Tahoma, Arial;
-    text-transform: uppercase;
+.google-image {
+  max-height: 180px;
+  width: 240px;
 }
-a{
-    text-decoration:none;
+
+.word {
+  //cursor: pointer;
+  text-align: center;
+/*position: relative;*/
+/*bottom: 15%;*/
+  //background: url(card-hover.png) repeat-x scroll 0 0 transparent;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
 
 }
 
 .menu {
-    position: absolute;
-    right: 0;
-    width: 200px;
-    heigth: 100%;
+  position: absolute;
+  right: 0;
+  width: 300px;
+  heigth: 100%;
 }
+
 .cards {
   width: 80%;
 }
 
+input[type="text"], textarea {
+  width: 350px;
+  padding: 8px 8px;
+  font-size: 14px;
+  color: #89897e;
+  border: 1px solid #e5e5dd;
+  background: #FAFAFA;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
 
+input[type="button"], input[type="submit"], .btn {
+  margin-left: 0;
+  margin-right: 10px;
+  padding: 8px 15px;
+  text-transform: uppercase;
+  line-height: 1;
+  border: none;
+  background-color: #EDEDED;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px #fff;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  &:hover {
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+  }
+}
+
+.btn-fat {
+  @extend .btn;
+  padding: 12px 15px;
+}
+
+.btn-view-card {
+  @extend .btn;
+  border: 1px solid #AEAEAE;
+}
+
+/*<<<<<<< HEAD*/
 input[type="text"], textarea{
 width: 350px;
 padding: 8px 8px;
@@ -116,10 +193,31 @@ box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
 .form{
     /*width: 80%;*/
     margin: 0 auto;
-    text-align: center;
+    /*text-align: center;*/
 }
 
-#card_word{
-width: 250px;
+/*#card_word{*/
+/*width: 250px;*/
+/*=======*/
+.view-card-wrapper {
+  bottom: 30px;
+  margin-left: 45px;
+  margin-top: 15px;
+  position: absolute;
+}
+
+a.btn {
+  margin-top: 10px;
+}
+//input[type="submit"]:hover, input[type="button"]:hover, .btn:hover {
+//  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+//  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+//  box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+//}
+
+.form {
+/*width: 80%;*/
+  margin: 0 auto;
+/*>>>>>>> 4f18ba28438f3731f1bae7bb3972070670d242c2*/
 }
 

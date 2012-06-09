@@ -4,8 +4,8 @@
 #= require google_jsapi
 
 google.load('search', '1')
-count = 0
-lastImage = ''
+
+@toggleSpinner = -> $("#spinner").toggle()
 
 @lookup = (word) ->
   lookupDefinition(word, $('#card_definition')[0])
@@ -24,16 +24,13 @@ lookupTranslation = (word, resultContainer) ->
   lookupService("/lookup/translation", word, resultContainer)
 
 
-@addImageLinkToWord = (image) ->
-#  $(image).attr("src")
-  if lastImage
-    transformImage(lastImage, "none")
-#    $(lastImage).attr("name", "")
+@highlightImage = (image) ->
+  $('.google-image').css('border','none').each( -> transformImage(this, "none"))
   transformImage(image, "scale(1.1) rotate(-2deg)" )
-#  $(image).attr("name", "card[image_src]")
+  $(image).css('border','3px solid black')
+
+@populateImageUrl = (image) ->
   $("#card_image_src").val($(image).attr("src"))
-  console.log($("#card_image_src").val());
-  lastImage = image
 
 
 transformImage = (image, transformationString) ->
@@ -45,29 +42,24 @@ transformImage = (image, transformationString) ->
 
 searchComplete = (searcher) ->
   if searcher.results and searcher.results.length > 0
-    contentDiv = document.getElementById('google-images-content')
-    contentDiv.innerHTML = ''
+    contentDiv = $('#google-images-content')
+    contentDiv.html('')
 
     results = searcher.results
     printSearch result, contentDiv for result in results
 
 printSearch = (result, contentDiv) ->
-  count = count + 1
-  newImg = document.createElement('img')
-  newImg.setAttribute('id', 'google-image-'+count)
-  newImg.setAttribute('class', 'google-image')
-#  newImg.src = result.tbUrl
-  newImg.src = result.url
-  newImg.setAttribute('onclick', 'addImageLinkToWord(this);')
-  contentDiv.appendChild(newImg)
+  contentDiv.append(
+    "<img class='google-image' src='" + result.url + "' onmouseover='highlightImage(this);populateImageUrl(this);' />"
+  )
 
 lookupImages = (word) ->
   imageSearch = new google.search.ImageSearch()
 #  TODO comment out restrictions later
   imageSearch.setRestriction(
-    google.search.ImageSearch.IMAGESIZE_MEDIUM
-#      google.search.ImageSearch.RESTRICT_RIGHTS,
-#      google.search.ImageSearch.RIGHTS_COMMERCIAL_MODIFICATION
+    google.search.ImageSearch.IMAGESIZE_MEDIUM,
+    google.search.ImageSearch.RESTRICT_RIGHTS,
+    google.search.ImageSearch.RIGHTS_COMMERCIAL_MODIFICATION
   )
   imageSearch.setSearchCompleteCallback(this, searchComplete, [imageSearch])
   imageSearch.execute(word)
@@ -81,19 +73,19 @@ lookupService = (url, word, resultContainer) ->
   });
 
 
+@mySideChange = (front) ->
+  if front
+    $(this).parent('div.front').show()
+    $(this).parent('div.back').hide()
+  else
+    $(this).parent('div.front').hide()
+    $(this).parent('div.back').show()
+
 $ ->
-  $("div.field input#card_word").live "keyup", (e) ->
-    e.preventDefault()
-    e.stopPropagation()
-    console.log(e.keyCode)
-    if e.keyCode == 13
-      $("div.field input#lookup-button").click()
-      console.log("click!")
-
-#  $("article.card-thumb").click ->
-#    $(this).rotate3Di('flip', 500)
-#    $(this).find("div").stop().rotate3Di('flip', 250);
-
+  $("article.card").hover(
+    -> $(this).find("div").stop().rotate3Di('flip', 250,{direction: 'clockwise', sideChange: mySideChange}),
+    -> $(this).find("div").stop().rotate3Di('unflip', 500, {sideChange: mySideChange})
+  )
 
 
 

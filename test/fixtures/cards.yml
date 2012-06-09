@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  word: MyString
-  definition: MyText
-  translation: MyText
-  example: MyText
+  uuid: 11111
+  word: slacker
+  definition: a person who shirks their work or duty
+  translation: flemmard
+  example: In nonfiction, a hack documentary filmmaker abuses the trust of a high school slacker and his family.
 
 two:
-  word: MyString
-  definition: MyText
-  translation: MyText
-  example: MyText
+  uuid: 22222
+  word: money
+  definition:  the most common medium of exchange
+  translation: argent, fric
+  example: Money down the drain.

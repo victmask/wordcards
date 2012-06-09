@@ -6,7 +6,6 @@ class CreateCards < ActiveRecord::Migration
       t.text :definition
       t.text :example
       t.integer :user_id
-
       t.timestamps
     end
   end
