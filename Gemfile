@@ -13,7 +13,7 @@ group :production do
   gem 'thin'
 end
 gem 'mechanize'
-
+#gem 'omniauth'
 gem 'twitter'
 
 # Gems used only for assets and not required

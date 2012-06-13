@@ -1,5 +1,6 @@
 Wordcards::Application.routes.draw do
-  root to: "cards#index"
+  #root to: "cards#index"
+  root to: "sessions#new"
 
   resources :cards
 
@@ -9,7 +10,6 @@ Wordcards::Application.routes.draw do
 
   post "tweet/push_cards"
   match "/status" => "status#index"
-
   #get "card/index"
   #
   #get "card/new"
