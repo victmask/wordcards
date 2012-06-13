@@ -1,0 +1,15 @@
+
+<!--< %= link_to image_tag('sign-in-with-twitter.png'), "/auth/twitter"%>-->
+<span id="login"></span>
+<script src="http://platform.twitter.com/anywhere.js?id=Da6mz5XObtIePzMhWugew&v=1" type="text/javascript"></script>
+<script type="text/javascript">
+  twttr.anywhere.config({ callbackURL: "http://lvh.me:3000/" });
+  twttr.anywhere(function (T) {
+    T("#login").connectButton({size: "xlarge"});
+  });
+
+</script>
+
+
+
+
