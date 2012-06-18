@@ -1,6 +1,6 @@
 Wordcards::Application.routes.draw do
-  #root to: "cards#index"
-  root to: "sessions#new"
+  root to: "cards#index"
+  #root to: "sessions#new"
 
   resources :cards
 
